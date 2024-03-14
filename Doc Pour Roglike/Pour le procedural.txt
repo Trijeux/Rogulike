@@ -1,0 +1,2 @@
+salle full aléatoir 
+ennemie procedural (ex. 4 ennemeie easy, 6 ennemie medume, 10 ennemie hard)

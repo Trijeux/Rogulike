@@ -1,0 +1,41 @@
+digraph MyGraph {
+ "Start Game" [shape=box]
+ "Chose Room" [shape=diamond]
+"Game Over" [shape=box]
+"Give Prise" [shape=diamond]
+"Boss Room" [shape=box]
+"Battle Boss" [shape=diamond]
+"End Floor" [shape=box]
+"Tresor Room" [shape=box]
+"Battle Mob" [shape=diamond]
+
+
+
+  "Diagram Menu UI" ->
+  "Start Game" ->
+  "Chose Room"
+
+  "Chose Room" -> "Battle Mob" [label = "Else", color = green, fontcolor = green]
+  "Battle Mob" -> "Game Over" [label = "Player is Dead", color = red, fontcolor = red]
+  "Battle Mob" -> "Give Prise" [label = "Player Kill All Mob", color = green, fontcolor = green]
+
+  "Game Over" -> "Diagram Menu UI"
+
+  "Give Prise" -> "Chose Room" [label = "If Mob is kill", color = violet, fontcolor = violet]
+
+  "Chose Room" -> "Boss Room" [label = "If Finish All Room on the floor", color = red, fontcolor = red]
+
+  "Boss Room" -> "Battle Boss" 
+
+  "Battle Boss" -> "Game Over" [label = "Player is Dead", color = red, fontcolor = red]
+
+    "Battle Boss" -> "Give Prise" [label = "Player Kill Boss", color = green, fontcolor = green]
+    
+    "Give Prise" -> "End Floor" [label = "If Boss is kill", color =orange, fontcolor = orange]
+    
+    "End Floor" -> "Chose Room"
+
+    "Chose Room" -> "Tresor Room" [label = "If Spawn Door", color = blue, fontcolor = blue]
+
+    "Tresor Room" -> "Give Prise"
+  }

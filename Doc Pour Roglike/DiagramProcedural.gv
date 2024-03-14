@@ -1,0 +1,38 @@
+digraph MyGraph {
+
+    Easy [shape=hexagon, color=green, fontcolor=green]
+    Medume [shape=hexagon color=blue, fontcolor=blue] 
+    Hard [shape=hexagon color=red, fontcolor=red]
+
+    "Chose Difficulty" -> Easy
+    "Chose Difficulty" -> Medume
+    "Chose Difficulty" -> Hard
+    Easy -> "EnnemyE" [label="50%" color=green, fontcolor=green]
+    Easy -> "EnnemyM" [label="35%" color=green, fontcolor=green]
+    Easy -> "EnnemyH" [label="15%" color=green, fontcolor=green]
+    Medume -> "EnnemyE" [label = "25%", color=blue, fontcolor=blue]
+    Medume -> "EnnemyM" [label = "50%", color=blue, fontcolor=blue]
+    Medume -> "EnnemyH" [label = "25%", color=blue, fontcolor=blue]
+    Hard -> "EnnemyE" [label = "15%", color=red, fontcolor=red]
+    Hard -> "EnnemyM" [label = "35%", color=red, fontcolor=red]
+    Hard -> "EnnemyH" [label = "50%", color=red, fontcolor=red]
+
+    subgraph cluster_Easy {
+    label="Easy";
+    "EnnemyE" -> "2 Shoter"
+    "EnnemyE" -> "1 CaC"
+    "EnnemyE" -> "1 Heal/Tank/MiniBoss"
+  }
+  subgraph cluster_Medume {
+    label="Medume";
+    "EnnemyM" -> "3 Shoter"
+    "EnnemyM" -> "2 CàC"
+    "EnnemyM" -> "2 Heal/Tank/MiniBoss"
+  }
+  subgraph cluster_Hard {
+    label="Hard";
+    "EnnemyH" -> "4 Shoter"
+    "EnnemyH" -> "3 CàC"
+    "EnnemyH" -> "3 Heal/Tank/MiniBoss"
+  }
+}

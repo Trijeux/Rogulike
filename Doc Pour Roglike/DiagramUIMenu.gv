@@ -1,0 +1,19 @@
+digraph MyGraph {
+    "Menu" [shape=diamond]
+    "Start" [shape=box]
+    "Controlle" [shape=box]
+    "Quit Game" [shape=box]
+    "Diagram Game play" [shape=box]
+    "Image Controlle" [shape=box]
+    "Shut Down Aplication" [shape=box]
+    "Chose Difficulty" [shape=box]
+
+    "Menu" -> "Start"
+    "Menu" -> "Controlle"
+    "Menu" -> "Quit Game"
+
+    "Start" -> "Chose Difficulty" -> "Diagram Game play"
+    "Controlle" -> "Image Controlle"
+    "Image Controlle" -> "Menu" [label = "Player Finish vew controlle", color = blue, fontcolor = blue]
+    "Quit Game" -> "Shut Down Aplication"
+}

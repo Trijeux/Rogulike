@@ -1,0 +1,30 @@
+digraph MyGraph {
+pause [label = "Game Pause (time scale 0)", shape=diamond]
+"Resume" [shape=box]
+"Controlle" [shape=box]
+"Return Title" [shape=box]
+"Quit Game" [shape=box]
+"Image Controlle" [shape=box]
+"Return Title" [shape=box]
+"Diagram UI Menu" [shape=box]
+"Shut Down Aplication" [shape=box]
+"Diagram Game play" [shape=box]
+
+  "Diagram Game play" -> pause [label = "If Player pause the game", color = blue, fontcolor = blue]
+
+    pause -> "Resume"
+    pause -> "Controlle"
+    pause -> "Return Title"
+    pause -> "Quit Game"
+
+    "Controlle" -> "Image Controlle"
+
+    "Image Controlle" -> pause [label = "Player Finish vew controlle", color = blue, fontcolor = blue]
+
+    "Resume" -> "Diagram Game play"
+
+    "Return Title" -> "Diagram UI Menu"
+
+    "Quit Game" -> "Shut Down Aplication"
+
+}
