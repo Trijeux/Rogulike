@@ -17,6 +17,7 @@ public class Wizzard : MonoBehaviour
     void Start()
     {
         _player = FindFirstObjectByType<StartAssetInputPlayer>();
+        _wizzardFire = GetComponent<WizzardFire>();
         Debug.Log(_player.transform.position);
         _tp = FindFirstObjectByType<TP>();
 
