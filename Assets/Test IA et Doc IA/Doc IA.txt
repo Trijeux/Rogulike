@@ -1,0 +1,20 @@
+Wizzard:
+	Ce Téléport a des point prédéfinie
+	Tire sur le joueur une boule de feu
+	(Pas encore sur) Peux mettre un bouclier sur ses allier
+
+FireBombe (Référance a un ennemie dans ff12) https://static.wikia.nocookie.net/finalfantasy/images/5/5f/XII_king_bomb_render.png/revision/latest/scale-to-width/360?cb=20120721175806:
+	Suit le joueur
+	quand le joueur le tue il implose et fait des dégat dans un zone que le joueur peux voir avant que elle explose
+	
+Samurai:
+	si le joueur est sur la platform de l'ennemie il le suit pour lui donne un coup d'épée
+	peux rarment changer de platforme en utilisent un tecnique de samurai qui le fait diparètre dans un fumer et après qui réaparèe sur un autre platforme si le joueur n'ai pas sur ça platforme
+	
+Skeleton (Boss):
+	il bouge de droit a gauche de l'aren
+	donne un coup de marteau qui crée une vage de terre que le joueur pour l'éviter doit sauter sur les platforme supèrieur
+	
+	
+Google Doc pour les commentaire : https://docs.google.com/document/d/1TPt58CMcJ8sU8QidYmFyoMFVMy75RfzopEBvHr_lsUk/edit?usp=sharing
+	
