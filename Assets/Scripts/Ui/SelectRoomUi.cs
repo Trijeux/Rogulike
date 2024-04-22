@@ -15,8 +15,19 @@ public class SelectRoomUi : MonoBehaviour
     [SerializeField] private Animator _selectArrow24;
     [SerializeField] private Animator _selectArrow25;
     [SerializeField] private Animator _selectArrowBoss;
+    [SerializeField] public GameObject Selector11;
+    [SerializeField] public GameObject Selector12;
+    [SerializeField] public GameObject Selector13;
+    [SerializeField] public GameObject Selector21;
+    [SerializeField] public GameObject Selector22;
+    [SerializeField] public GameObject Selector23;
+    [SerializeField] public GameObject Selector24;
+    [SerializeField] public GameObject Selector25;
+    [SerializeField] public GameObject SelectorBoss;
     [SerializeField] private GeneratorNv _generatorNv;
     [SerializeField] private StartAssetInputUi _input;
+    [SerializeField] private SelectRoom _selectRoomScript;
+    [SerializeField] private GameObject _selectRoom;
     [SerializeField] private bool InputDown;
     [SerializeField] private bool InputValide;
     private int _selector1;
@@ -26,6 +37,8 @@ public class SelectRoomUi : MonoBehaviour
     private int _niveauSelectorPart = 1;
     private int _selectorNv;
     private bool _generate;
+    public int _LevelSelect;
+    
 
     public bool Generate
     {
@@ -35,6 +48,8 @@ public class SelectRoomUi : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        AllDesactive();
+        _LevelSelect = _niveauSelectorPart;
     }
 
     // Update is called once per frame
@@ -54,6 +69,28 @@ public class SelectRoomUi : MonoBehaviour
 
         Selection1();
         AnimArrow();
+    }
+
+    public void RoomEnd()
+    {
+        ResetAnim();
+        AllDesactive();
+        InputValide = false;
+        _input.valide = 0;
+        _LevelSelect = _niveauSelectorPart;
+    }
+    
+    private void AllDesactive()
+    {
+        Selector11.SetActive(false);
+        Selector12.SetActive(false);
+        Selector13.SetActive(false);
+        Selector21.SetActive(false);
+        Selector22.SetActive(false);
+        Selector23.SetActive(false);
+        Selector24.SetActive(false);
+        Selector25.SetActive(false);
+        SelectorBoss.SetActive(false);
     }
 
     private void Selection1()
@@ -168,11 +205,14 @@ public class SelectRoomUi : MonoBehaviour
                     }
 
                     InputValide = true;
-                    ResetAnim();
                     _selectorNv = 1;
+                    _selectRoom.SetActive(true);
+                    _selectRoomScript.NextRoom();
+                    gameObject.SetActive(false);
+
                 }
 
-                if (_input.valide == 0)
+                if (_input.valide == 0 && InputValide)
                 {
                     InputValide = false;
                 }
@@ -206,16 +246,18 @@ public class SelectRoomUi : MonoBehaviour
                     InputDown = false;
                 }
 
-                if (_input.valide > 0)
+                if (_input.valide > 0 && !InputValide)
                 {
-                    ResetAnim();
                     _niveauSelectorPart = 5;
+                    InputValide = true;
+                    _selectRoom.SetActive(true);
+                    _selectRoomScript.NextRoom();
+                    gameObject.SetActive(false);
                 }
                 
-                if (_input.valide == 0 && !InputValide)
+                if (_input.valide == 0 && InputValide)
                 {
                     InputValide = false;
-                    InputValide = true;
                 }
 
                 break;
@@ -249,9 +291,11 @@ public class SelectRoomUi : MonoBehaviour
                 
                 if (_input.valide > 0 && !InputValide)
                 {
-                    ResetAnim();
                     InputValide = true;
                     _niveauSelectorPart = 5;
+                    _selectRoom.SetActive(true);
+                    _selectRoomScript.NextRoom();
+                    gameObject.SetActive(false);
                 }
                 
                 if (_input.valide == 0)
@@ -290,9 +334,11 @@ public class SelectRoomUi : MonoBehaviour
                 
                 if (_input.valide > 0 && !InputValide)
                 {
-                    ResetAnim();
                     _niveauSelectorPart = 5;
                     InputValide = true;
+                    _selectRoom.SetActive(true);
+                    _selectRoomScript.NextRoom();
+                    gameObject.SetActive(false);
                 }
                 
                 if (_input.valide == 0)
@@ -306,9 +352,12 @@ public class SelectRoomUi : MonoBehaviour
                 {
                     Debug.Log("Salle Boss");
                     InputValide = true;
+                    _selectRoom.SetActive(true);
+                    _selectRoomScript.NextRoom();
+                    gameObject.SetActive(false);
                 }
                 
-                if (_input.valide == 0)
+                if (_input.valide == 0 && InputValide)
                 {
                     InputValide = false;
                 }
@@ -332,18 +381,27 @@ public class SelectRoomUi : MonoBehaviour
                             _selectArrow11.SetFloat("Select", 1);
                             _selectArrow12.SetFloat("Select", 0);
                             _selectArrow13.SetFloat("Select", 0);
+                            Selector11.SetActive(true);
+                            Selector12.SetActive(false);
+                            Selector13.SetActive(false);
                         }
                         else if (_generatorNv._arrow12.activeSelf)
                         {
                             _selectArrow11.SetFloat("Select", 0);
                             _selectArrow12.SetFloat("Select", 1);
                             _selectArrow13.SetFloat("Select", 0);
+                            Selector11.SetActive(false);
+                            Selector12.SetActive(true);
+                            Selector13.SetActive(false);
                         }
                         else if (_generatorNv._arrow13.activeSelf)
                         {
                             _selectArrow11.SetFloat("Select", 0);
                             _selectArrow12.SetFloat("Select", 0);
                             _selectArrow13.SetFloat("Select", 1);
+                            Selector11.SetActive(false);
+                            Selector12.SetActive(false);
+                            Selector13.SetActive(true);
                         }
 
                         break;
@@ -353,12 +411,18 @@ public class SelectRoomUi : MonoBehaviour
                             _selectArrow11.SetFloat("Select", 0);
                             _selectArrow12.SetFloat("Select", 1);
                             _selectArrow13.SetFloat("Select", 0);
+                            Selector11.SetActive(false);
+                            Selector12.SetActive(true);
+                            Selector13.SetActive(false);
                         }
                         else if (_generatorNv._arrow13.activeSelf)
                         {
                             _selectArrow11.SetFloat("Select", 0);
                             _selectArrow12.SetFloat("Select", 0);
                             _selectArrow13.SetFloat("Select", 1);
+                            Selector11.SetActive(false);
+                            Selector12.SetActive(false);
+                            Selector13.SetActive(true);
                         }
 
                         break;
@@ -369,6 +433,9 @@ public class SelectRoomUi : MonoBehaviour
                             _selectArrow11.SetFloat("Select", 0);
                             _selectArrow12.SetFloat("Select", 0);
                             _selectArrow13.SetFloat("Select", 1);
+                            Selector11.SetActive(false);
+                            Selector12.SetActive(false);
+                            Selector13.SetActive(true);
                         }
 
                         break;
@@ -385,11 +452,15 @@ public class SelectRoomUi : MonoBehaviour
                         {
                             _selectArrow21.SetFloat("Select", 1);
                             _selectArrow22.SetFloat("Select", 0);
+                            Selector21.SetActive(true);
+                            Selector22.SetActive(false);
                         }
                         else if (_generatorNv._arrow12.activeSelf)
                         {
                             _selectArrow21.SetFloat("Select", 0);
                             _selectArrow22.SetFloat("Select", 1);
+                            Selector21.SetActive(false);
+                            Selector22.SetActive(true);
                         }
 
                         break;
@@ -398,6 +469,8 @@ public class SelectRoomUi : MonoBehaviour
                         {
                             _selectArrow21.SetFloat("Select", 0);
                             _selectArrow22.SetFloat("Select", 1);
+                            Selector21.SetActive(false);
+                            Selector22.SetActive(true);
                         }
 
                         break;
@@ -415,18 +488,27 @@ public class SelectRoomUi : MonoBehaviour
                             _selectArrow22.SetFloat("Select", 1);
                             _selectArrow23.SetFloat("Select", 0);
                             _selectArrow24.SetFloat("Select", 0);
+                            Selector22.SetActive(true);
+                            Selector23.SetActive(false);
+                            Selector24.SetActive(false);
                         }
                         else if (_generatorNv._arrow23.activeSelf)
                         {
                             _selectArrow22.SetFloat("Select", 0);
                             _selectArrow23.SetFloat("Select", 1);
                             _selectArrow24.SetFloat("Select", 0);
+                            Selector22.SetActive(false);
+                            Selector23.SetActive(true);
+                            Selector24.SetActive(false);
                         }
                         else if (_generatorNv._arrow24.activeSelf)
                         {
                             _selectArrow22.SetFloat("Select", 0);
                             _selectArrow23.SetFloat("Select", 0);
                             _selectArrow24.SetFloat("Select", 1);
+                            Selector22.SetActive(false);
+                            Selector23.SetActive(false);
+                            Selector24.SetActive(true);
                         }
 
                         break;
@@ -436,12 +518,18 @@ public class SelectRoomUi : MonoBehaviour
                             _selectArrow22.SetFloat("Select", 0);
                             _selectArrow23.SetFloat("Select", 1);
                             _selectArrow24.SetFloat("Select", 0);
+                            Selector22.SetActive(false);
+                            Selector23.SetActive(true);
+                            Selector24.SetActive(false);
                         }
                         else if (_generatorNv._arrow24.activeSelf)
                         {
                             _selectArrow22.SetFloat("Select", 0);
                             _selectArrow23.SetFloat("Select", 0);
                             _selectArrow24.SetFloat("Select", 1);
+                            Selector22.SetActive(false);
+                            Selector23.SetActive(false);
+                            Selector24.SetActive(true);
                         }
 
                         break;
@@ -452,6 +540,9 @@ public class SelectRoomUi : MonoBehaviour
                             _selectArrow22.SetFloat("Select", 0);
                             _selectArrow23.SetFloat("Select", 0);
                             _selectArrow24.SetFloat("Select", 1);
+                            Selector22.SetActive(false);
+                            Selector23.SetActive(false);
+                            Selector24.SetActive(true);
                         }
 
                         break;
@@ -468,11 +559,15 @@ public class SelectRoomUi : MonoBehaviour
                         {
                             _selectArrow24.SetFloat("Select", 1);
                             _selectArrow25.SetFloat("Select", 0);
+                            Selector24.SetActive(true);
+                            Selector25.SetActive(false);
                         }
                         else if (_generatorNv._arrow25.activeSelf)
                         {
                             _selectArrow24.SetFloat("Select", 0);
                             _selectArrow25.SetFloat("Select", 1);
+                            Selector24.SetActive(false);
+                            Selector25.SetActive(true);
                         }
 
                         break;
@@ -481,6 +576,8 @@ public class SelectRoomUi : MonoBehaviour
                         {
                             _selectArrow24.SetFloat("Select", 0);
                             _selectArrow25.SetFloat("Select", 1);
+                            Selector24.SetActive(false);
+                            Selector25.SetActive(true);
                         }
 
                         break;
@@ -491,6 +588,7 @@ public class SelectRoomUi : MonoBehaviour
                 break;
             case 5:
                 _selectArrowBoss.SetFloat("Select", 1);
+                SelectorBoss.SetActive(true);
                 break;
         }
     }

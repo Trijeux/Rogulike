@@ -1,93 +1,90 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro.EditorUtilities;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Wizzard : MonoBehaviour
 {
-    [SerializeField] private StartAssetInputPlayer _player;
-    [SerializeField] private TP _tp;
-    [SerializeField] private List<GameObject> _tpList;
-    [SerializeField] private WizzardFire _wizzardFire;
+    private SpriteRenderer _sr;
+    private StartAssetInputPlayer _player;
+    private WizzardFire _wizzardFire;
+    private TP _tp;
     private int _numbtp;
     private int _numAction;
-    private bool _temp = true;
+    [SerializeField] private bool _tempIsDead;
+    [SerializeField] private Animator _tpWizzard;
+    [SerializeField] private Animator _tpDestination;
+    [SerializeField] private Animator _casteWizzard;
+    [SerializeField] private GameObject _tpDestinationTransform;
+    [SerializeField] [Range(0.1f, 5f)] private float _WahtForChose;
+    [SerializeField] [Range(0.1f, 5f)] private float _tpTemp;
+    [SerializeField] [Range(0.1f, 5f)] private float _casteTemp;
 
     // Start is called before the first frame update
     void Start()
     {
         _player = FindFirstObjectByType<StartAssetInputPlayer>();
+        _sr = GetComponent<SpriteRenderer>();
         _wizzardFire = GetComponent<WizzardFire>();
         Debug.Log(_player.transform.position);
         _tp = FindFirstObjectByType<TP>();
-
-        _tpList.Clear();
-        if (_tp != null)
-        {
-            Transform parentTransform = _tp.transform;
-
-            for (int i = 0; i < parentTransform.childCount; i++)
-            {
-                Transform childTransform = parentTransform.GetChild(i);
-                GameObject childObject = childTransform.gameObject;
-
-                _tpList.Add(childObject);
-            }
-
-            foreach (GameObject child in _tpList)
-            {
-                Debug.Log("Enfant trouvé : " + child.name);
-            }
-        }
-        else
-        {
-            Debug.LogWarning("La référence au parentObject n'est pas définie.");
-        }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (_temp)
-        {
-            _temp = false;
-            StartCoroutine(WaitForOneSecond());
-            
-        }
-        
+        StartCoroutine(WizardSequence());
     }
 
     private void Teleport()
     {
-        _numbtp = Random.Range(0, _tpList.Count);
+        _numbtp = Random.Range(0, _tp.TpList.Count);
+        _tpDestinationTransform.transform.position = _tp.TpList[_numbtp].transform.position;
+        _tpWizzard.SetFloat("TpWizzard", 1);
+        _tpDestination.SetFloat("TpDestination", 1);
         //Debug.Log(_numbtp);
-        gameObject.transform.position = _tpList[_numbtp].transform.position;
     }
 
-    IEnumerator WaitForOneSecond()
+    private void Update()
+    {
+        if (_player.transform.position.x < transform.position.x)
+        {
+            _sr.flipX = true;
+        }
+        else
+        {
+            _sr.flipX = false;
+        }
+    }
+
+    IEnumerator WizardSequence()
     {
         Debug.Log("Coroutine started");
 
         // Attend une seconde
-        _numAction = Random.Range(1, 3);
-        switch (_numAction)
+        do
         {
-            case 1:
-                Teleport();
-                break;
-            case 2:
-                _wizzardFire.Shoot();
-                break;
-            default:
-                Debug.Log("Erreur");
-                break;
-    }
-        
-        
-        yield return new WaitForSeconds(1f);
-
-        _temp = true;
+            _numAction = Random.Range(1, 3);
+            switch (_numAction)
+            {
+                case 1:
+                    Teleport();
+                    yield return new WaitForSeconds(_tpTemp);
+                    _tpWizzard.SetFloat("TpWizzard", 0);
+                    _tpDestination.SetFloat("TpDestination", 0);
+                    gameObject.transform.position = _tp.TpList[_numbtp].transform.position;
+                    break;
+                case 2:
+                    _casteWizzard.SetFloat("Caste", 1);
+                    yield return new WaitForSeconds(_casteTemp);
+                    _casteWizzard.SetFloat("Caste", 0);
+                    _wizzardFire.Shoot();
+                    break;
+                default:
+                    Debug.Log("Erreur");
+                    break;
+            }
+            
+        yield return new WaitForSeconds(_WahtForChose);
 
         Debug.Log("One second has passed");
+        } while (_tempIsDead);
     }
 }

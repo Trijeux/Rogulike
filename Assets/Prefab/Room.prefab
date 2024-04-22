@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6997021711916343028
 Transform:
   m_ObjectHideFlags: 0
@@ -80,6 +80,9 @@ MonoBehaviour:
   _room16: {fileID: 1219837372738486612}
   _roomBoss: {fileID: 699330093494624605}
   _roomItem: {fileID: 6206907661693638569}
+  _generator: {fileID: 0}
+  _generatorNv: {fileID: 0}
+  _selectRoomUi: {fileID: 0}
 --- !u!1001 &4173987672043653
 PrefabInstance:
   m_ObjectHideFlags: 0

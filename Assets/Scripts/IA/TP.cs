@@ -4,10 +4,39 @@ using UnityEngine;
 
 public class TP : MonoBehaviour
 {
+    
+    [SerializeField] private List<GameObject> _tpList; 
+    private TP _tp;
+    public List<GameObject> TpList => _tpList;
+    
+
     // Start is called before the first frame update
     void Start()
     {
+        _tp = FindFirstObjectByType<TP>();
         
+        _tpList.Clear();
+        if (_tp != null)
+        {
+            Transform parentTransform = _tp.transform;
+
+            for (int i = 0; i < parentTransform.childCount; i++)
+            {
+                Transform childTransform = parentTransform.GetChild(i);
+                GameObject childObject = childTransform.gameObject;
+
+                _tpList.Add(childObject);
+            }
+
+            foreach (GameObject child in _tpList)
+            {
+                Debug.Log("Enfant trouvé : " + child.name);
+            }
+        }
+        else
+        {
+            Debug.LogWarning("La référence au parentObject n'est pas définie.");
+        }
     }
 
     // Update is called once per frame

@@ -16,5 +16,10 @@ public class SelectRoom_Editor : Editor
         {
             generator.Test();
         }
+
+        if (GUILayout.Button("Nest Room"))
+        {
+            generator.NextRoom();
+        }
     }
 }

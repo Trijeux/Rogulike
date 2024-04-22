@@ -6,37 +6,21 @@ public class DestroyBullet : MonoBehaviour
 {
     private Transform player;
     private bool _temp;
+    private WizzardFire _fire;
     
     // Start is called before the first frame update
     void Start()
     {
         player = player = GameObject.FindGameObjectWithTag("Player").transform;;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (player != null)
-        {
-            StartCoroutine(WaitForOneSecond());
-        }
-    }
-
-    private void DestroysBullet()
-    {
-            Destroy(gameObject);
+        _fire = GameObject.FindFirstObjectByType<WizzardFire>();
+        StartCoroutine(FireRange());
     }
     
-    IEnumerator WaitForOneSecond()
+    
+    IEnumerator FireRange()
     {
-        Debug.Log("Coroutine started");
-        
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(_fire.BulletRange);
         
         Destroy(gameObject);
-
-        _temp = true;
-
-        Debug.Log("One second has passed");
     }
 }

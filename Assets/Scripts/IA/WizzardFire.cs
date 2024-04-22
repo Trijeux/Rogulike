@@ -6,6 +6,9 @@ public class WizzardFire : MonoBehaviour
     public GameObject bulletPrefab; // Préfabriqué de la balle
     public Transform firePoint; // Point d'où la balle est tirée
     public float bulletSpeed = 20f; // Vitesse de la balle
+    [SerializeField] private float _bulletRange;
+
+    public float BulletRange => _bulletRange;
 
     private Transform player; // Transform du joueur
 

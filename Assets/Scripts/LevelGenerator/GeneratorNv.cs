@@ -49,6 +49,15 @@ public class GeneratorNv : MonoBehaviour
     [SerializeField] private GameObject _132H;
     [SerializeField] private GameObject _132C;
     [SerializeField] private GameObject _132I;
+    
+    public string _nv11Room;
+    public string _nv12Room;
+    public string _nv13Room;
+    public string _nv111Room;
+    public string _nv112_121Room;
+    public string _nv122Room;
+    public string _nv123_131Room;
+    public string _nv132Room;
 
     [SerializeField] public GameObject _arrow11;
     [SerializeField] public GameObject _arrow12;
@@ -419,6 +428,7 @@ public class GeneratorNv : MonoBehaviour
         if (_nv11.activeSelf)
         {
             Generate();
+            _nv11Room = _level;
             if (_level == "C")
                 _11C.SetActive(true);
             if (_level == "H")
@@ -430,6 +440,7 @@ public class GeneratorNv : MonoBehaviour
         if (_nv12.activeSelf)
         {
             Generate();
+            _nv12Room = _level;
             if (_level == "C")
                 _12C.SetActive(true);
             if (_level == "H")
@@ -441,6 +452,7 @@ public class GeneratorNv : MonoBehaviour
         if (_nv13.activeSelf)
         {
             Generate();
+            _nv13Room = _level;
             if (_level == "C")
                 _13C.SetActive(true);
             if (_level == "H")
@@ -452,6 +464,7 @@ public class GeneratorNv : MonoBehaviour
         if (_nv111.activeSelf)
         {
             Generate();
+            _nv111Room = _level;
             if (_level == "C")
                 _111C.SetActive(true);
             if (_level == "H")
@@ -463,6 +476,7 @@ public class GeneratorNv : MonoBehaviour
         if (_nv112_121.activeSelf)
         {
             Generate();
+            _nv112_121Room = _level;
             if (_level == "C")
                 _112_121C.SetActive(true);
             if (_level == "H")
@@ -474,6 +488,7 @@ public class GeneratorNv : MonoBehaviour
         if (_nv122.activeSelf)
         {
             Generate();
+            _nv122Room = _level;
             if (_level == "C")
                 _122C.SetActive(true);
             if (_level == "H")
@@ -485,6 +500,7 @@ public class GeneratorNv : MonoBehaviour
         if (_nv123_131.activeSelf)
         {
             Generate();
+            _nv123_131Room = _level;
             if (_level == "C")
                 _123_131C.SetActive(true);
             if (_level == "H")
@@ -496,6 +512,7 @@ public class GeneratorNv : MonoBehaviour
         if (_nv132.activeSelf)
         {
             Generate();
+            _nv132Room = _level;
             if (_level == "C")
                 _132C.SetActive(true);
             if (_level == "H")
