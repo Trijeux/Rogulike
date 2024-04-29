@@ -271,7 +271,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Samurai_5
+      name: Samurai_Attaque_6
       rect:
         serializedVersion: 2
         x: 402
@@ -292,7 +292,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Samurai_6
+      name: Samurai_Attaque_5
       rect:
         serializedVersion: 2
         x: 344
@@ -313,7 +313,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Samurai_7
+      name: Samurai_Attaque_3
       rect:
         serializedVersion: 2
         x: 148
@@ -334,7 +334,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Samurai_8
+      name: Samurai_Attaque_2
       rect:
         serializedVersion: 2
         x: 89
@@ -376,7 +376,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Samurai_10
+      name: Samurai_Idel_1
       rect:
         serializedVersion: 2
         x: 17
@@ -397,11 +397,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Samurai_11
+      name: Samurai_Idel_2
       rect:
         serializedVersion: 2
         x: 81
-        y: 47
+        y: 48
         width: 39
         height: 36
       alignment: 0
@@ -418,7 +418,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Samurai_12
+      name: Samurai_Idel_3
       rect:
         serializedVersion: 2
         x: 145
@@ -439,7 +439,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Samurai_13
+      name: Samurai_Idel_4
       rect:
         serializedVersion: 2
         x: 209
@@ -460,7 +460,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Samurai_14
+      name: Samurai_Idel_5
       rect:
         serializedVersion: 2
         x: 273
@@ -523,7 +523,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Samurai_17
+      name: Samurai_Attaque_1
       rect:
         serializedVersion: 2
         x: 273
@@ -565,7 +565,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Samurai_19
+      name: Samurai_Attaque_4
       rect:
         serializedVersion: 2
         x: 216
@@ -661,27 +661,27 @@ TextureImporter:
     nameFileIdTable:
       Samurai_0: -2478889539282618257
       Samurai_1: 6196420938707770456
-      Samurai_10: 6349693119308421203
-      Samurai_11: 3201385567625559355
-      Samurai_12: 5469427529910456376
-      Samurai_13: 3620193276165841676
-      Samurai_14: 3101740420666718679
       Samurai_15: 1734930326726346313
       Samurai_16: -1564591985560673905
-      Samurai_17: -4121586194530059466
       Samurai_18: -4042244772064011894
-      Samurai_19: -5202497485236638390
       Samurai_2: 6503449420296021827
       Samurai_20: 2834704803917457339
       Samurai_21: -50668920858872062
       Samurai_22: 7461265642213886409
       Samurai_3: -6148577968312177951
       Samurai_4: -8047419291584325457
-      Samurai_5: 675213387862437324
-      Samurai_6: -7609848411548816580
-      Samurai_7: -2053153706787843333
-      Samurai_8: 6713375688244461429
       Samurai_9: -7332373486103247079
+      Samurai_Attaque_1: -4121586194530059466
+      Samurai_Attaque_2: 6713375688244461429
+      Samurai_Attaque_3: -2053153706787843333
+      Samurai_Attaque_4: -5202497485236638390
+      Samurai_Attaque_5: -7609848411548816580
+      Samurai_Attaque_6: 675213387862437324
+      Samurai_Idel_1: 6349693119308421203
+      Samurai_Idel_2: 3201385567625559355
+      Samurai_Idel_3: 5469427529910456376
+      Samurai_Idel_4: 3620193276165841676
+      Samurai_Idel_5: 3101740420666718679
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

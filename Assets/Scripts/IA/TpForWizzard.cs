@@ -2,23 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TP : MonoBehaviour
+public class TpForWizzard : MonoBehaviour
 {
     
     [SerializeField] private List<GameObject> _tpList; 
-    private TP _tp;
     public List<GameObject> TpList => _tpList;
     
 
     // Start is called before the first frame update
     void Start()
     {
-        _tp = FindFirstObjectByType<TP>();
-        
         _tpList.Clear();
-        if (_tp != null)
+        if (gameObject != null)
         {
-            Transform parentTransform = _tp.transform;
+            Transform parentTransform = gameObject.transform;
 
             for (int i = 0; i < parentTransform.childCount; i++)
             {

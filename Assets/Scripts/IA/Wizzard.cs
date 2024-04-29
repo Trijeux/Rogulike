@@ -10,7 +10,7 @@ public class Wizzard : MonoBehaviour
     private SpriteRenderer _sr;
     private StartAssetInputPlayer _player;
     private WizzardFire _wizzardFire;
-    private TP _tp;
+    private TpForWizzard _tpForWizzard;
     private int _numbtp;
     private int _numAction;
     [SerializeField] private bool _tempIsDead;
@@ -28,15 +28,15 @@ public class Wizzard : MonoBehaviour
         _player = FindFirstObjectByType<StartAssetInputPlayer>();
         _sr = GetComponent<SpriteRenderer>();
         _wizzardFire = GetComponent<WizzardFire>();
-        Debug.Log(_player.transform.position);
-        _tp = FindFirstObjectByType<TP>();
-        StartCoroutine(WizardSequence());
+        //Debug.Log(_player.transform.position);
+        _tpForWizzard = FindFirstObjectByType<TpForWizzard>();
+        StartCoroutine(WizarrdSequence());
     }
 
     private void Teleport()
     {
-        _numbtp = Random.Range(0, _tp.TpList.Count);
-        _tpDestinationTransform.transform.position = _tp.TpList[_numbtp].transform.position;
+        _numbtp = Random.Range(0, _tpForWizzard.TpList.Count);
+        _tpDestinationTransform.transform.position = _tpForWizzard.TpList[_numbtp].transform.position;
         _tpWizzard.SetFloat("TpWizzard", 1);
         _tpDestination.SetFloat("TpDestination", 1);
         //Debug.Log(_numbtp);
@@ -46,21 +46,22 @@ public class Wizzard : MonoBehaviour
     {
         if (_player.transform.position.x < transform.position.x)
         {
-            _sr.flipX = true;
+            transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
         }
         else
         {
-            _sr.flipX = false;
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
         }
     }
 
-    IEnumerator WizardSequence()
+    IEnumerator WizarrdSequence()
     {
         Debug.Log("Coroutine started");
 
         // Attend une seconde
         do
         {
+            yield return new WaitForSeconds(_WahtForChose);
             _numAction = Random.Range(1, 3);
             switch (_numAction)
             {
@@ -69,7 +70,7 @@ public class Wizzard : MonoBehaviour
                     yield return new WaitForSeconds(_tpTemp);
                     _tpWizzard.SetFloat("TpWizzard", 0);
                     _tpDestination.SetFloat("TpDestination", 0);
-                    gameObject.transform.position = _tp.TpList[_numbtp].transform.position;
+                    gameObject.transform.position = _tpForWizzard.TpList[_numbtp].transform.position;
                     break;
                 case 2:
                     _casteWizzard.SetFloat("Caste", 1);
@@ -81,10 +82,6 @@ public class Wizzard : MonoBehaviour
                     Debug.Log("Erreur");
                     break;
             }
-            
-        yield return new WaitForSeconds(_WahtForChose);
-
-        Debug.Log("One second has passed");
         } while (_tempIsDead);
     }
 }
