@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2296772944397967099}
   - component: {fileID: 9126481998601978447}
   - component: {fileID: 7359934290344382791}
+  - component: {fileID: 6083110244702268852}
   m_Layer: 0
   m_Name: Skeleton Boss
   m_TagString: Untagged
@@ -109,3 +110,34 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6083110244702268852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 522485834340675362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4dde82ff5d335d408324b5b51779d66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spawnerRoch:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _bossPotition1: {fileID: 0}
+  _bossPotition2: {fileID: 0}
+  _bossAnim: {fileID: 7359934290344382791}
+  _rochPrefab: {fileID: 8528909185785431055, guid: 2819f76f674e13f4d97f84d6b60dfedb, type: 3}
+  _timeAttack: 1
+  _spawnTime: 0.2
+  _timeRush: 1
+  _deplacementDuration: 2
+  _isDead: 0

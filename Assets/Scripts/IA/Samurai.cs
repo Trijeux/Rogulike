@@ -1,7 +1,7 @@
-using System;
+
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public enum Direction
@@ -35,6 +35,13 @@ public class Samurai : MonoBehaviour
     [SerializeField] [Range(0.1f, 5f)] private float _disparitionCoolDown;
     [SerializeField] [Range(0.1f, 5f)] private float _InvisibilityCoolDown;
     [SerializeField] [Range(0.1f, 5f)] private float _aparitionCoolDown;
+    [SerializeField] [Range(0.1f, 5f)] private float _isDeadTime;
+    [SerializeField] private GameObject IsDead;
+    [FormerlySerializedAs("_kill")] [SerializeField] private HitEnnemie hit;
+    [SerializeField] private float _life;
+    [SerializeField] private bool _cooldown;
+    
+    
     public float TempSlash => _tempSlash;
     public StartAssetInputPlayer Player => _player;
 
@@ -72,6 +79,19 @@ public class Samurai : MonoBehaviour
                 _direction = Direction.Left;
             }
         }
+
+        if (hit.IsHit && !_cooldown)
+        {
+            StopCoroutine(SamuraiSequence());
+            _animatorSamurai.SetBool("Hit", true);
+            _cooldown = true;
+            _life--;
+            StartCoroutine(CoolDownHit());
+            if (_life <= 0)
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 
     private void Teleport()
@@ -94,8 +114,12 @@ public class Samurai : MonoBehaviour
                 newPosition.x = playerX - stoppingDistance;
                 break;
         }
-        gameObject.transform.position = newPosition;
-        Instantiate(_slash, spawnPosition, _player.transform.rotation);
+
+        if (!hit.IsHit)
+        {
+            gameObject.transform.position = newPosition;
+            Instantiate(_slash, spawnPosition, _player.transform.rotation);
+        }
     }
 
     IEnumerator SamuraiSequence()
@@ -131,6 +155,16 @@ public class Samurai : MonoBehaviour
                 Teleport();
                 _samuraiCountTempTp = 0;
             }
-        } while (_tempIsDead);
+        } while (!hit.IsHit);
+    }
+
+    IEnumerator CoolDownHit()
+    {
+        yield return new WaitForSeconds(1f);
+        Teleport();
+        _animatorSamurai.SetBool("Hit", false);
+        StartCoroutine(SamuraiSequence());
+        yield return new WaitForSeconds(1f);
+        _cooldown = false;
     }
 }

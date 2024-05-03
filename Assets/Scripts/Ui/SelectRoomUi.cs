@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
+
 using UnityEngine;
-using UnityEngine.Serialization;
+
 
 public class SelectRoomUi : MonoBehaviour
 {
@@ -30,6 +28,8 @@ public class SelectRoomUi : MonoBehaviour
     [SerializeField] private GameObject _selectRoom;
     [SerializeField] private bool InputDown;
     [SerializeField] private bool InputValide;
+    [SerializeField] private GameObject _player;
+    [SerializeField] private GameObject _UIPlayer;
     private int _selector1;
     private int _selector21;
     private int _selector22;
@@ -208,6 +208,8 @@ public class SelectRoomUi : MonoBehaviour
                     _selectorNv = 1;
                     _selectRoom.SetActive(true);
                     _selectRoomScript.NextRoom();
+                    _player.SetActive(true);
+                    _UIPlayer.SetActive(true);
                     gameObject.SetActive(false);
 
                 }
@@ -252,6 +254,8 @@ public class SelectRoomUi : MonoBehaviour
                     InputValide = true;
                     _selectRoom.SetActive(true);
                     _selectRoomScript.NextRoom();
+                    _player.SetActive(true);
+                    _UIPlayer.SetActive(true);
                     gameObject.SetActive(false);
                 }
                 
@@ -295,6 +299,8 @@ public class SelectRoomUi : MonoBehaviour
                     _niveauSelectorPart = 5;
                     _selectRoom.SetActive(true);
                     _selectRoomScript.NextRoom();
+                    _player.SetActive(true);
+                    _UIPlayer.SetActive(true);
                     gameObject.SetActive(false);
                 }
                 
@@ -338,6 +344,8 @@ public class SelectRoomUi : MonoBehaviour
                     InputValide = true;
                     _selectRoom.SetActive(true);
                     _selectRoomScript.NextRoom();
+                    _player.SetActive(true);
+                    _UIPlayer.SetActive(true);
                     gameObject.SetActive(false);
                 }
                 
@@ -354,6 +362,8 @@ public class SelectRoomUi : MonoBehaviour
                     InputValide = true;
                     _selectRoom.SetActive(true);
                     _selectRoomScript.NextRoom();
+                    _player.SetActive(true);
+                    _UIPlayer.SetActive(true);
                     gameObject.SetActive(false);
                 }
                 

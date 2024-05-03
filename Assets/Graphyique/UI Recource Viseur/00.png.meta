@@ -1594,7 +1594,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 00_59
+      name: demi_heart
       rect:
         serializedVersion: 2
         x: 98
@@ -1615,7 +1615,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 00_60
+      name: vide_heat
       rect:
         serializedVersion: 2
         x: 82
@@ -1636,7 +1636,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 00_61
+      name: heat
       rect:
         serializedVersion: 2
         x: 114
@@ -3114,10 +3114,7 @@ TextureImporter:
       00_56: 5587414353216628834
       00_57: 7963724030793742399
       00_58: 4847556084848445657
-      00_59: -9094301929961256274
       00_6: -1614297248123252564
-      00_60: -6309913810273450094
-      00_61: 801451789778697559
       00_62: -1074677923715908865
       00_63: -3066883819257038235
       00_64: -7579843369952650182
@@ -3159,6 +3156,9 @@ TextureImporter:
       00_97: -1573349991
       00_98: -304526104
       00_99: -1278491839
+      demi_heart: -9094301929961256274
+      heat: 801451789778697559
+      vide_heat: -6309913810273450094
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

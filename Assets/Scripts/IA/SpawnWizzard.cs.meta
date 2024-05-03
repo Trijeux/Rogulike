@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: c6210b61e9a0c3a45b6ac98e8a419c6d
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _prefabeWizzard: {fileID: 2858925579376609736, guid: 6a97cbf20bab0184082393cc122e63ed, type: 3}
+  - _ennemie: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

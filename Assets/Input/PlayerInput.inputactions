@@ -40,6 +40,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Pause",
+                    "type": "Value",
+                    "id": "a14f8d88-60e7-473d-92d6-b34b18c41c3b",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -110,7 +119,7 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "Walk Key",
+                    "name": "Walk Key WASD",
                     "id": "e8f34486-e3bc-45de-a7f2-ae81d3f22c5c",
                     "path": "1DAxis",
                     "interactions": "",
@@ -134,6 +143,39 @@
                 {
                     "name": "positive",
                     "id": "7fc4f6a1-a3f7-48f9-9d86-c0ba6c410a60",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Walk",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Walk Key ZQSD",
+                    "id": "7e046901-9473-4941-98a5-a2460780b59a",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Walk",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "ab36385f-f11a-4eee-9a6e-33535cb45cd0",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Walk",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "1ddcc4ca-5856-49ea-aeac-8a161ef2c684",
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
@@ -207,6 +249,28 @@
                     "action": "Caste",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "774c109f-203e-4279-93b0-3331c9a8b93b",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fefc6fe7-9fc1-46ec-be60-4abe68d002a7",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -277,7 +341,7 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "WS Up Down",
+                    "name": "WASD Up Down",
                     "id": "af82ccef-d17e-42a7-90cf-90857bffdf12",
                     "path": "1DAxis",
                     "interactions": "",
@@ -301,6 +365,39 @@
                 {
                     "name": "positive",
                     "id": "8f554bac-8fef-4ccb-b093-f2d51ad02e83",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UP_Down",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "ZQSD",
+                    "id": "455a2a86-778f-42e6-b336-62ef984ba378",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UP_Down",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "d7536aa9-585e-4d61-a870-81f90707be38",
+                    "path": "<Keyboard>/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UP_Down",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "773ee310-518f-4f11-83ae-2751e02cd3a9",
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",

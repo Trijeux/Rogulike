@@ -1,10 +1,7 @@
-using System;
-using System.Collections;
+
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Serialization;
-using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class GeneratorNv : MonoBehaviour
@@ -365,6 +362,14 @@ public class GeneratorNv : MonoBehaviour
             case false:
                 Debug.Log("Pas de Route 3");
                 break;
+        }
+        
+        if (_nv112_121.activeSelf && _nv11.activeSelf && !_nv111.activeSelf && !_arrow12.activeSelf)
+        {
+            _nv12.SetActive(true);
+            _arrow12.SetActive(true);
+            _arrowdiraction2.SetActive(true);
+            _numSelectNv1++;
         }
     }
 

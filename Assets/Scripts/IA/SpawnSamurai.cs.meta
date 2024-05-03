@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 91da5745d2c0ad44187ffa012592ada2
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _prefabeSamurai: {fileID: 1800626338945175077, guid: 7dcce6e98ccdf094492831e9a03077c1, type: 3}
+  - _ennemie: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

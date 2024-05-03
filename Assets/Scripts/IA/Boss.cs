@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public enum DirectionBoss
@@ -22,8 +21,17 @@ public class Boss : MonoBehaviour
     private DirectionBoss _direction = DirectionBoss.Left;
     [SerializeField][Range(0.1f , 10f)] public float _deplacementDuration = 5f;
     [SerializeField] private bool _isDead;
-    
-    
+    [SerializeField] private HitEnnemie _hit;
+    [SerializeField] private bool _cooldown;
+    [SerializeField] private int life;
+    [SerializeField] private GameObject Victoire;
+    [SerializeField] private GameObject LifeBoss;
+    private bool _start = true;
+
+
+    public int Life => life;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,13 +42,31 @@ public class Boss : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+        if (_hit.IsHit && !_cooldown)
+        {
+            _cooldown = true;
+            life--;
+            _bossAnim.SetBool("IsHit", true);
+            StartCoroutine(CoolDownHit());
+        }
+
+        if (life <= 0)
+        {
+            Victoire.SetActive(true);
+            LifeBoss.SetActive(false);
+            Destroy(gameObject);
+        }
     }
 
     IEnumerator BossSequence()
     {
         do
         {
+            if (_start)
+            {
+                yield return new WaitForSeconds(2f);
+                _start = false;
+            }
             yield return new WaitForSeconds(_timeAttack);
             _bossAnim.SetFloat("Attack", 1);
             yield return new WaitForSeconds(0.2f);
@@ -97,5 +123,12 @@ public class Boss : MonoBehaviour
             }
             _bossAnim.SetBool("Rush", false);
         } while (!_isDead);
+    }
+    IEnumerator CoolDownHit()
+    {
+        yield return new WaitForSeconds(1f);
+        _bossAnim.SetBool("IsHit", false);
+        yield return new WaitForSeconds(1f);
+        _cooldown = false;
     }
 }

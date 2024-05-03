@@ -922,7 +922,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 06_21
+      name: LifeBoss_
       rect:
         serializedVersion: 2
         x: 195
@@ -943,7 +943,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 06_22
+      name: LifeBoss_1
       rect:
         serializedVersion: 2
         x: 147
@@ -964,7 +964,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 06_23
+      name: LifeBoss_2
       rect:
         serializedVersion: 2
         x: 99
@@ -985,7 +985,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 06_24
+      name: LifeBoss_3
       rect:
         serializedVersion: 2
         x: 51
@@ -1006,7 +1006,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 06_25
+      name: LifeBoss_4
       rect:
         serializedVersion: 2
         x: 3
@@ -2802,11 +2802,6 @@ TextureImporter:
       06_19: 2414343710507323832
       06_2: -3213609745909556679
       06_20: 1702722965756044919
-      06_21: -7310718435115833628
-      06_22: -3460609258686177541
-      06_23: 5321405506712674580
-      06_24: -8142078518724970007
-      06_25: 3666395730429428221
       06_26: -1962623790705078186
       06_27: -3920597624754421681
       06_28: 2439555171015636904
@@ -2888,6 +2883,11 @@ TextureImporter:
       06_97: -1242601514582347558
       06_98: -8729647853200716728
       06_99: 4090151792637643787
+      LifeBoss_: -7310718435115833628
+      LifeBoss_1: -3460609258686177541
+      LifeBoss_2: 5321405506712674580
+      LifeBoss_3: -8142078518724970007
+      LifeBoss_4: 3666395730429428221
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

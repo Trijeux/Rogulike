@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
@@ -8,6 +9,7 @@ using UnityEngine.InputSystem;
         public float jump;
         public float attack;
         public float caste;
+        public float pause;
         
 #if ENABLE_INPUT_SYSTEM
         public void OnWalk(InputValue value)
@@ -29,6 +31,11 @@ using UnityEngine.InputSystem;
         {
             CasteInput(value.Get<float>());
         }
+
+        public void OnPause(InputValue value)
+        {
+           PauseInput(value.Get<float>());
+        }
 #endif
         public void WalkInput(float newWalkDirection)
         {
@@ -48,5 +55,10 @@ using UnityEngine.InputSystem;
         public void CasteInput(float newCaste)
         {
             caste = newCaste;
+        }
+
+        public void PauseInput(float newPause)
+        {
+            pause = newPause;
         }
     }

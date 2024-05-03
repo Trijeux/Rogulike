@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Net.NetworkInformation;
-using Mono.Cecil;
+
 using UnityEngine;
 
 public class SelectRoom : MonoBehaviour
@@ -28,47 +25,58 @@ public class SelectRoom : MonoBehaviour
     [SerializeField] private GameObject _generator;
     [SerializeField] private GeneratorNv _generatorNv;
     [SerializeField] private SelectRoomUi _selectRoomUi;
+    [SerializeField] private GameObject _player;
+    [SerializeField] private GameObject _UiPlayer;
     private int _roomPassed;
     private bool _item;
     private bool _heal;
     private bool _boss;
+
+    private bool temp = true;
+
+    private GameObject _roomEnd;
 
 
     // Start is called before the first frame update
 
     public void Test()
     {
-        resetRoom();
         RoomSelect();
     }
 
     public void NextRoom()
     {
-        resetRoom();
         if (_roomPassed < 5 && !_item && !_heal && !_boss)
         {
+            Destroy(_roomEnd);
             RoomSelect();
         }
         else if (_roomPassed < 5 && !_boss && !_heal)
         {
+            Destroy(_roomEnd);
             RoomSelect();
         }
         else if (_roomPassed < 5 && !_boss && !_item)
         {
+            Destroy(_roomEnd);
             RoomSelect();
         }
         else if (_roomPassed < 5 && !_item && !_heal)
         {
+            Destroy(_roomEnd);
             RoomSelect();
         }
         else
         {
+            Destroy(_roomEnd);
             _roomPassed = 0;
             _item = false;
             _heal = false;
             _boss = false;
             _selectRoomUi.RoomEnd();
             _generator.SetActive(true);
+            _player.SetActive(false);
+            _UiPlayer.SetActive(false);
             gameObject.SetActive(false);
         }
     }
@@ -94,56 +102,64 @@ public class SelectRoom : MonoBehaviour
             switch (TirageRand())
             {
                 case 1:
-                    _room1.SetActive(true);
+                    _roomEnd = Instantiate(_room1 , gameObject.transform);
                     break;
                 case 2:
-                    _room2.SetActive(true);
+                     _roomEnd = Instantiate(_room2, gameObject.transform);
                     break;
                 case 3:
-                    _room3.SetActive(true);
+                     _roomEnd = Instantiate(_room3, gameObject.transform);
                     break;
                 case 4:
-                    _room4.SetActive(true);
+                     _roomEnd = Instantiate(_room4, gameObject.transform);
                     break;
                 case 5:
-                    _room5.SetActive(true);
+                     _roomEnd = Instantiate(_room5, gameObject.transform);
                     break;
                 case 6:
-                    _room6.SetActive(true);
+                     _roomEnd = Instantiate(_room6, gameObject.transform);
                     break;
                 case 7:
-                    _room7.SetActive(true);
+                     _roomEnd = Instantiate(_room7, gameObject.transform);
                     break;
                 case 8:
-                    _room8.SetActive(true);
+                    Debug.Log("Room Select");
+                    _roomPassed--;
+                    RoomSelect();
+                    //_room8.SetActive(true);
                     break;
                 case 9:
-                    _room9.SetActive(true);
+                     _roomEnd = Instantiate(_room9, gameObject.transform);
                     break;
                 case 10:
-                    _room10.SetActive(true);
+                     _roomEnd = Instantiate(_room10, gameObject.transform);
                     break;
                 case 11:
-                    _room11.SetActive(true);
+                    Debug.Log("Room Select");
+                    _roomPassed--;
+                    RoomSelect();
                     break;
                 case 12:
-                    _room12.SetActive(true);
+                     _roomEnd = Instantiate(_room12, gameObject.transform);
                     break;
                 case 13:
-                    _room13.SetActive(true);
+                     _roomEnd = Instantiate(_room13, gameObject.transform);
                     break;
                 case 14:
-                    _room14.SetActive(true);
+                     _roomEnd = Instantiate(_room14, gameObject.transform);
                     break;
                 case 15:
-                    _room15.SetActive(true);
+                    Debug.Log("Room Select");
+                    _roomPassed--;
+                    RoomSelect();
                     break;
                 case 16:
-                    _room16.SetActive(true);
+                     _roomEnd = Instantiate(_room16, gameObject.transform);
                     break;
             }
 
             _roomPassed++;
+            Debug.Log("Room passed " + _roomPassed);
         }
 
         if (((_generatorNv._nv11Room == "I" && _selectRoomUi.Selector11.activeSelf
@@ -162,7 +178,7 @@ public class SelectRoom : MonoBehaviour
             (_generatorNv._nv123_131Room == "I" && _selectRoomUi.Selector24.activeSelf &&
              (_selectRoomUi._LevelSelect == 3 || _selectRoomUi._LevelSelect == 4)))
         {
-            _roomItem.SetActive(true);
+             _roomEnd = Instantiate(_roomItem, gameObject.transform);
             _roomPassed += 5;
             _item = true;
         }
@@ -183,14 +199,14 @@ public class SelectRoom : MonoBehaviour
             (_generatorNv._nv123_131Room == "H" && _selectRoomUi.Selector24.activeSelf &&
              (_selectRoomUi._LevelSelect == 3 || _selectRoomUi._LevelSelect == 4)))
         {
-            _roomItem.SetActive(true);
+             _roomEnd = Instantiate(_roomItem, gameObject.transform);
             _roomPassed += 5;
             _heal = true;
         }
 
         if (_selectRoomUi.SelectorBoss.activeSelf && _selectRoomUi._LevelSelect == 5)
         {
-            _roomBoss.SetActive(true);
+             _roomEnd = Instantiate(_roomBoss, gameObject.transform);
             _roomPassed += 5;
             _boss = true;
         }
@@ -199,28 +215,11 @@ public class SelectRoom : MonoBehaviour
     private int TirageRand()
     {
         _roomNum = Random.Range(1, 17);
+        if (temp)
+        {
+            _roomNum = 8;
+            temp = false;
+        }
         return _roomNum;
-    }
-
-    private void resetRoom()
-    {
-        _room1.SetActive(false);
-        _room2.SetActive(false);
-        _room3.SetActive(false);
-        _room4.SetActive(false);
-        _room5.SetActive(false);
-        _room6.SetActive(false);
-        _room7.SetActive(false);
-        _room8.SetActive(false);
-        _room9.SetActive(false);
-        _room10.SetActive(false);
-        _room11.SetActive(false);
-        _room12.SetActive(false);
-        _room13.SetActive(false);
-        _room14.SetActive(false);
-        _room15.SetActive(false);
-        _room16.SetActive(false);
-        _roomBoss.SetActive(false);
-        _roomItem.SetActive(false);
     }
 }

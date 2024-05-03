@@ -1,24 +1,30 @@
 ﻿
-    using System.Collections;
+
     using UnityEngine;
 
     public class DestroySlash : MonoBehaviour
     {
         private bool _temp;
         private Samurai _samurai;
+        private StatsPlayer _stats;
+        private CharacterControllerAnimation _animation;
+        [SerializeField] private GameObject _slash;
     
         // Start is called before the first frame update
         void Start()
         {
             _samurai = FindFirstObjectByType<Samurai>();
-            StartCoroutine(SlashTime());
+            _stats = FindFirstObjectByType<StatsPlayer>();
+            _animation = FindFirstObjectByType<CharacterControllerAnimation>();
         }
     
-    
-        IEnumerator SlashTime()
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            yield return new WaitForSeconds(_samurai.TempSlash);
-        
-            Destroy(gameObject);
+            if (collision.CompareTag("Player"))
+            {
+                _stats.Life--;
+                _animation.IsHit1 = true;
+                gameObject.SetActive(false);
+            }
         }
     }

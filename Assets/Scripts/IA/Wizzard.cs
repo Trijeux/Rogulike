@@ -1,8 +1,6 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using TMPro.EditorUtilities;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class Wizzard : MonoBehaviour
@@ -13,7 +11,6 @@ public class Wizzard : MonoBehaviour
     private TpForWizzard _tpForWizzard;
     private int _numbtp;
     private int _numAction;
-    [SerializeField] private bool _tempIsDead;
     [SerializeField] private Animator _tpWizzard;
     [SerializeField] private Animator _tpDestination;
     [SerializeField] private Animator _casteWizzard;
@@ -21,6 +18,12 @@ public class Wizzard : MonoBehaviour
     [SerializeField] [Range(0.1f, 5f)] private float _WahtForChose;
     [SerializeField] [Range(0.1f, 5f)] private float _tpTemp;
     [SerializeField] [Range(0.1f, 5f)] private float _casteTemp;
+    [FormerlySerializedAs("_kill")] [SerializeField] private HitEnnemie hit;
+    [SerializeField] private GameObject IsDead;
+    [SerializeField] [Range(0.1f, 5f)] private float _isDeadTime;
+    [SerializeField] private GameObject _sprite;
+    [SerializeField] private float _life;
+    [SerializeField] private bool _cooldown;
 
     // Start is called before the first frame update
     void Start()
@@ -52,6 +55,19 @@ public class Wizzard : MonoBehaviour
         {
             transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
         }
+        
+        if (hit.IsHit && !_cooldown)
+        {
+            StopCoroutine(WizarrdSequence());
+            _casteWizzard.SetBool("Hit", true);
+            _cooldown = true;
+            _life--;
+            StartCoroutine(CoolDownHit());
+            if (_life <= 0)
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 
     IEnumerator WizarrdSequence()
@@ -82,6 +98,15 @@ public class Wizzard : MonoBehaviour
                     Debug.Log("Erreur");
                     break;
             }
-        } while (_tempIsDead);
+        } while (!hit.IsHit);
+    }
+    IEnumerator CoolDownHit()
+    {
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(WizarrdSequence());
+        Teleport();
+        _casteWizzard.SetBool("Hit", false);
+        yield return new WaitForSeconds(1f);
+        _cooldown = false;
     }
 }

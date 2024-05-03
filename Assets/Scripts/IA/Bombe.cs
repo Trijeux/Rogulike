@@ -1,6 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Bombe : MonoBehaviour
 {
@@ -14,6 +14,9 @@ public class Bombe : MonoBehaviour
        [SerializeField][Range(0.1f, 10f)] private float _tempExplotion;
        [SerializeField][Range(0.1f, 10f)] private float _tempEndExplotion;
        [SerializeField] private GameObject _sprit;
+       [SerializeField] private GameObject _hitzone;
+       [FormerlySerializedAs("_kill")] [SerializeField] private HitEnnemie hit;
+       private bool _explotion;
 
        private bool _explotionStart = false;
        private Rigidbody2D rb;
@@ -26,7 +29,12 @@ public class Bombe : MonoBehaviour
    
        void Update()
        {
-           if (!_isDead)
+           _isDead = hit.IsHit;
+           if (_isDead)
+           {
+               _explotion = true;
+           }
+           if (!_explotion)
            {
                Vector2 direction = (_player.transform.position - transform.position).normalized;
 
@@ -43,7 +51,7 @@ public class Bombe : MonoBehaviour
                transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 10f);
            }
 
-           if (_isDead && !_explotionStart)
+           if (_explotion && !_explotionStart)
            {
                StartCoroutine(Explotion());
                _explotionStart = true;
@@ -57,8 +65,11 @@ public class Bombe : MonoBehaviour
            _explotionAnimator.SetFloat("Explotion", 1f);
            _rayonExplotion.SetActive(false);
            _explotionCollision.SetActive(true);
+           _hitzone.SetActive(true);
            yield return new WaitForSeconds(_tempEndExplotion);
            _sprit.SetActive(false);
            _explotionAnimator.SetFloat("Explotion", 0f);
+           yield return new WaitForSeconds(0.5f);
+           Destroy(gameObject);
        }
 }
