@@ -8,7 +8,7 @@ Select  Enter                      A
 
 Dans Le Jeu :
 
-        Key                     GamePad
+        Key                    GamePad
 Right    D           Left Stick Right/D Pad Right
 Left    A/Q            Left Stick Left/D Pad Left
 Jump   space                       A
@@ -18,6 +18,6 @@ Pause   Esc                      Start
 
 Info Salle :
 
-Étoile = Item
-Coeur = Heal
-Griffe = Combat
+Étoile = Item        
+Coeur = Heal        
+Griffe = Combat        
