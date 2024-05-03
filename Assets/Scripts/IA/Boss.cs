@@ -26,6 +26,7 @@ public class Boss : MonoBehaviour
     [SerializeField] private int life;
     [SerializeField] private GameObject Victoire;
     [SerializeField] private GameObject LifeBoss;
+    [SerializeField] private AudioSource _hitSong;
     private bool _start = true;
 
 
@@ -44,6 +45,7 @@ public class Boss : MonoBehaviour
     {
         if (_hit.IsHit && !_cooldown)
         {
+            _hitSong.Play();
             _cooldown = true;
             life--;
             _bossAnim.SetBool("IsHit", true);
@@ -127,6 +129,7 @@ public class Boss : MonoBehaviour
     IEnumerator CoolDownHit()
     {
         yield return new WaitForSeconds(1f);
+        _hitSong.Stop();
         _bossAnim.SetBool("IsHit", false);
         yield return new WaitForSeconds(1f);
         _cooldown = false;

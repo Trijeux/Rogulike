@@ -13,6 +13,7 @@ public class CharacterControllerAnimation : MonoBehaviour
     [SerializeField] private GameObject _hand;
     [SerializeField] private GameObject _sword;
     [SerializeField] private Animator _animatorSword;
+    [SerializeField] private AudioSource _Hit;
 
     [FormerlySerializedAs("_state")] [SerializeField]
     private StatsPlayer stats;
@@ -126,6 +127,7 @@ public class CharacterControllerAnimation : MonoBehaviour
 
                 if (IsHit)
                 {
+                    _Hit.Play();
                     _animatorPlayer.SetBool("IsHit", true);
                     _animatorHand.SetBool("IsHit", true);
                     _animatorSword.SetBool("IsHit", true);
@@ -133,6 +135,7 @@ public class CharacterControllerAnimation : MonoBehaviour
                 }
                 else
                 {
+                    _Hit.Stop();
                     _animatorPlayer.SetBool("IsHit", false);
                     _animatorHand.SetBool("IsHit", false);
                     _animatorSword.SetBool("IsHit", false);

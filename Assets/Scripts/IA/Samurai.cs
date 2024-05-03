@@ -40,6 +40,7 @@ public class Samurai : MonoBehaviour
     [FormerlySerializedAs("_kill")] [SerializeField] private HitEnnemie hit;
     [SerializeField] private float _life;
     [SerializeField] private bool _cooldown;
+    [SerializeField] private AudioSource _hit;
     
     
     public float TempSlash => _tempSlash;
@@ -82,6 +83,7 @@ public class Samurai : MonoBehaviour
 
         if (hit.IsHit && !_cooldown)
         {
+            _hit.Play();
             StopCoroutine(SamuraiSequence());
             _animatorSamurai.SetBool("Hit", true);
             _cooldown = true;
@@ -161,6 +163,7 @@ public class Samurai : MonoBehaviour
     IEnumerator CoolDownHit()
     {
         yield return new WaitForSeconds(1f);
+        _hit.Stop();
         Teleport();
         _animatorSamurai.SetBool("Hit", false);
         StartCoroutine(SamuraiSequence());

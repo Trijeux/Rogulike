@@ -24,6 +24,7 @@ public class Wizzard : MonoBehaviour
     [SerializeField] private GameObject _sprite;
     [SerializeField] private float _life;
     [SerializeField] private bool _cooldown;
+    [SerializeField] private AudioSource _hit;
 
     // Start is called before the first frame update
     void Start()
@@ -58,6 +59,7 @@ public class Wizzard : MonoBehaviour
         
         if (hit.IsHit && !_cooldown)
         {
+            _hit.Play();
             StopCoroutine(WizarrdSequence());
             _casteWizzard.SetBool("Hit", true);
             _cooldown = true;
@@ -103,6 +105,7 @@ public class Wizzard : MonoBehaviour
     IEnumerator CoolDownHit()
     {
         yield return new WaitForSeconds(1f);
+        _hit.Stop();
         StartCoroutine(WizarrdSequence());
         Teleport();
         _casteWizzard.SetBool("Hit", false);

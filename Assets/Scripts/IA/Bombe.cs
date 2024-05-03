@@ -16,6 +16,7 @@ public class Bombe : MonoBehaviour
        [SerializeField] private GameObject _sprit;
        [SerializeField] private GameObject _hitzone;
        [FormerlySerializedAs("_kill")] [SerializeField] private HitEnnemie hit;
+       [SerializeField] private AudioSource _hit;
        private bool _explotion;
 
        private bool _explotionStart = false;
@@ -62,11 +63,13 @@ public class Bombe : MonoBehaviour
        {
            _rayonExplotion.SetActive(true);
            yield return new WaitForSeconds(_tempExplotion);
+           _hit.Play();
            _explotionAnimator.SetFloat("Explotion", 1f);
            _rayonExplotion.SetActive(false);
            _explotionCollision.SetActive(true);
            _hitzone.SetActive(true);
            yield return new WaitForSeconds(_tempEndExplotion);
+           _hit.Stop();
            _sprit.SetActive(false);
            _explotionAnimator.SetFloat("Explotion", 0f);
            yield return new WaitForSeconds(0.5f);
