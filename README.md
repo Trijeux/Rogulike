@@ -4,7 +4,7 @@ Dans La Selection des Menu :
 --------Key-------------------GamePad        
 Up------W/Z----------Left Stick Up/D Pad Up        
 Down-----S----------Left Stick Down/D Pad Down        
-Select  Enter                      A
+Select--Enter-------------------A
 
 Dans Le Jeu :        
         Key                    GamePad
